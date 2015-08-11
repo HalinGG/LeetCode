@@ -25,19 +25,20 @@ public class TreePreTraversal {
 	 
 
 	public static void preorderTraversal(TreeNode root) {	
-		Stack<TreeNode> stack = new Stack<TreeNode>();
-		stack.push(root);
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.add(root);
 	 
-		while(!stack.empty()){
-			TreeNode n = stack.pop();
+		while(!queue.isEmpty()){
+			TreeNode n = queue.poll();
 			System.out.println(n.val);
 			
-			if(n.right != null){
-	                stack.push(n.right);
-			}
 			if(n.left != null){
-				stack.push(n.left);
+				queue.add(n.left);
 			}
+			if(n.right != null){
+				queue.add(n.right);
+			}
+			
 			
 		}
 	}
